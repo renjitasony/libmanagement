@@ -10,7 +10,33 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
-
+          $.ajax({
+            type:"GET",
+            url:"books.json",
+            beforeSend:function(){
+              $("#loader1").show();
+            },
+            success:function(bkdata){
+              $("#loader1").hide();
+              console.log("vannu");
+              var output = "";
+              for(var i in bkdata){
+                
+                var bkid = bkdata[i].bkid;
+                var urltoimg = bkdata[i].bkimage;
+                var bktitle = bkdata[i].bktitle;
+                var bkdescptn = bkdata[i].bkdescptn;
+                console.log(urltoimg);
+                output += "<div class='card' style='width: 18rem;'>  <img class='card-img-top' src='./";
+                output += urltoimg +" ' alt='";
+                output += bktitle + " '>   <div class='card-body'>   <h5 class='card-title'>";
+                output += bktitle + "</h5>  <p class='card-text' style=''>";
+                output += bkdescptn + " </p> </div> </div>";              
+               
+              }
+              $("#bookdetails").html(output);
+            }
+          });
         });
     </script>
 </head>
@@ -18,7 +44,7 @@
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="background-color:blue; ">
                 <ul class="navbar-nav">
                   <li class="nav-item active">
-                    <a class="nav-link" href="famouspersonalities.html">Home</a>
+                    <a class="nav-link" href="liblisting.html">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="booksdisplay.html">Books</a>
@@ -27,15 +53,11 @@
               </nav>
               <br>
     <div class="container">
-        <div class='card' style='width: 18rem;'>
-            <img class='card-img-top' src='' alt='Card image cap'>
-            <div class='card-body'>
-              <h5 class='card-title'>Card title</h5>
-              <p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href='#' class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-
+    
+        <img src="./ajax-loader.gif" alt="Loading" id="loader1">
+        <div class="row" id="bookdetails">
+           
+         </div>
     </div>
 </body>
 </html>

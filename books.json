@@ -1,6 +1,16 @@
 [
 {
     "bkid":"E01",
+    "bktitle":"THE IMMORTALS OF MELUHA",
+    "bkauthor":"Amish Tripathi",
+    "bkcategory":"Mythology",
+    "bkdescptn":"The Immortals of Meluha is the first novel of the Shiva trilogy series by Amish Tripathi. The story is set in the land of Meluha and starts with the arrival of the Shiva. The Meluhans believe that Shiva is their fabled saviour Neelkanth. Shiva decides to help the Meluhans in their war against the Chandravanshis, who had joined forces with a cursed Nagas; however, during his journey and the fight that ensues, Shiva learns how his choices actually reflect who he aspires to be and how they lead to dire consequences.",
+    "bkpages":390,
+    "bkprice":250,
+    "bkimage":"meluha.jpg"
+},
+{
+    "bkid":"E02",
     "bktitle":"",
     "bkauthor":"",
     "bkcategory":"",
@@ -9,16 +19,7 @@
     "bkimage":""
 },
 {
-    "bkid":"E01",
-    "bktitle":"",
-    "bkauthor":"",
-    "bkcategory":"",
-    "bkdescptn":"",
-    "bkprice":0,
-    "bkimage":""
-},
-{
-    "bkid":"E01",
+    "bkid":"E03",
     "bktitle":"",
     "bkauthor":"",
     "bkcategory":"",
