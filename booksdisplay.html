@@ -6,17 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Books Collection</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+    <style>
+      #bimg{
+        height:250px;
+        width:200px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+      }
+      #outer{
+        position: relative;
+        z-index: 0;
+        background-color:rgb(2, 2, 83);
+        height: 400px;
+        width: 1100px;        
+      }
+      #bookdetails{
+        position: absolute;
+        z-index: -190;
+        background-color: rgb(197, 13, 13);
+        left: 15rem;        
+        width: 900px;
+      }
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
           $.ajax({
             type:"GET",
             url:"books.json",
-            beforeSend:function(){
-              $("#loader1").show();
-            },
+            // beforeSend:function(){
+            //   $("#loader1").show();
+            // },
             success:function(bkdata){
+              
               $("#loader1").hide();
               console.log("vannu");
               var output = "";
@@ -26,22 +50,58 @@
                 var urltoimg = bkdata[i].bkimage;
                 var bktitle = bkdata[i].bktitle;
                 var bkdescptn = bkdata[i].bkdescptn;
-                console.log(urltoimg);
-                output += "<div class='card' style='width: 18rem;'>  <img class='card-img-top' src='./";
+                var bkcategory = bkdata[i].bkcategory;
+                var filterval = $("#filcat").val();
+                console.log(filterval);
+                if((filterval != "All") && (bkcategory != filterval)){
+                    continue;                  
+                }
+                
+                output += "<div class='col-sm-4'> <div class='card' style='width: 17rem;'>  <img class='card-img-top' src='./";
                 output += urltoimg +" ' alt='";
-                output += bktitle + " '>   <div class='card-body'>   <h5 class='card-title'>";
+                output += bktitle + " ' id='bimg'>   <div class='card-body'>   <h5 class='card-title'>";
                 output += bktitle + "</h5>  <p class='card-text' style=''>";
-                output += bkdescptn + " </p> </div> </div>";              
+                output += bkdescptn + " </p> </div> </div> </div>";              
                
               }
               $("#bookdetails").html(output);
             }
           });
+          $("#filterme").click(function(){
+            alert("vannu");
+            $.ajax({
+              type:"GET",
+              url:"books.json",
+              success:function(data){
+                var output = "";
+              for(var i in data){
+                
+                var bkid = data[i].bkid;
+                var urltoimg = data[i].bkimage;
+                var bktitle = data[i].bktitle;
+                var bkdescptn = data[i].bkdescptn;
+                var bkcategory = data[i].bkcategory;
+                var filterval = $("#filcat").val();
+                
+                if((filterval != "All") && (bkcategory != filterval)){
+                    continue;                  
+                }
+                console.log(filterval);
+                output += "<div class='col-sm-4'> <div class='card' style='width: 17rem;'>  <img class='card-img-top' src='./";
+                output += urltoimg +" ' alt='";
+                output += bktitle + " ' id='bimg'>   <div class='card-body'>   <h5 class='card-title'>";
+                output += bktitle + "</h5>  <p class='card-text' style=''>";
+                output += bkdescptn + " </p> </div> </div> </div>";            
+              }
+              $("#bookdetails").html(output);
+              }
+            });
+          });
         });
     </script>
 </head>
 <body>
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="background-color:blue; ">
+        <!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="background-color:blue; ">
                 <ul class="navbar-nav">
                   <li class="nav-item active">
                     <a class="nav-link" href="liblisting.html">Home</a>
@@ -50,14 +110,66 @@
                     <a class="nav-link" href="booksdisplay.html">Books</a>
                   </li>                  
                 </ul>
-              </nav>
+              </nav> -->
+              <!-- <nav class="navbar navbar-light bg-red" style="background-color: crimson;">
+                  <ul class="navbar-nav">
+                      <li class="nav-item active">
+                        <a class="nav-link" href="liblisting.html">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="booksdisplay.html">Books</a>
+                      </li>                  
+                    </ul>
+                  <form class="form-inline">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+                </nav> -->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">                   
+                  
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                          <a class="nav-link" href="liblisting.html">Login <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="bookregn.html">Books</a>
+                          </li>                          
+                        <li class="nav-item">
+                          <a class="nav-link" href="booksdisplay.html">Books</a>
+                        </li>                          
+                      </ul>
+                      <form class="form-inline my-2 my-lg-0">
+                        <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+                        <div class="form-group">
+                           
+                            <select class="form-control" id ="filcat" value="All" >
+                                <option value="All" selected>All Categories</option>
+                                <option value="Mythology">Mythology</option>
+                                <option value="Romance">Romance</option>
+                                <option value="Thriller">Thriller</option>
+                                <option value="Horror">Horror</option>
+                            </select>
+                          </div>
+                        <button class="btn btn-outline-primary my-2 my-sm-0" id="filterme" type="button">Search</button>
+                        
+                      </form>
+                    </div>
+                  </nav>
+                  
+
               <br>
     <div class="container">
-    
-        <img src="./ajax-loader.gif" alt="Loading" id="loader1">
+        
+        <br>
+        <!-- <img src="./ajax-loader.gif" alt="Loading" id="loader1"> -->
+        <div id="outer">
+
+        </div>
         <div class="row" id="bookdetails">
-           
+            
          </div>
+         
     </div>
 </body>
 </html>
