@@ -22,16 +22,26 @@
       }
       #bookdetails{
         position: relative;
-        top:250px;
+        top:100px;
         z-index:5;
         background-color:white;
-        left: 10rem;        
+        left: 5rem;        
         width: 1000px;
+      }
+      .card{
+        border: 1px solid blue;
+        padding: 10px;
+        margin: 10px;
+        height: 300px;
+        
+      }
+      .navbar-custom{
+        background-color: rgb(5, 5, 138);
       }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <nav class="navbar navbar-expand-sm  navbar-custom">
         <ul class="navbar-nav">
           <li class="nav-item active">
             <a class="nav-link" href="liblisting.html">Login</a>
@@ -52,19 +62,30 @@
             <h1 style="color: white;">Library</h1>
           </div>
           <br>
-        <div class="row" id="bookdetails" style="border: 1px solid blue;">
+        <div class="row" id="bookdetails" >
           <div class="col">
-              <form>
-                  <div class="form-group">
-                    <label for="uname">User Name</label>
-                    <input type="input" class="form-control" id="uname" placeholder="Enter username">              
+            <div class="card">             
+              <div class="card-body">
+                  <div class="card-title">
+                    Log In
                   </div>
-                  <div class="form-group">
-                    <label for="pwd">Password</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Password">
-                  </div>            
-                  <button type="button" class="btn btn-primary" id="login">Login</button>
-                </form>
+                  <form>
+                      <div class="form-group">
+                        <label for="uname">User Name</label>
+                        <input type="input" class="form-control" id="uname" placeholder="Enter username">              
+                      </div>
+                      <div class="form-group">
+                        <label for="pwd">Password</label>
+                        <input type="password" class="form-control" id="pwd" placeholder="Password">
+                      </div> 
+                      <div class="form-group">
+                          <button type="button" class="btn btn-primary" id="login">Login</button>
+                      </div>           
+                      
+                    </form>
+              </div>
+            </div>
+              
           </div>
         </div>        
       </div>

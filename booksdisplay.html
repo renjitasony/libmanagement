@@ -11,7 +11,7 @@
         position: fixed;
         width: 100%;
         z-index: 10;
-        color: blue;
+        background-color: rgb(5, 5, 138);
       }
       body{
         width: 1200px;
@@ -57,9 +57,16 @@
         border: 5px solid  rgb(197, 13, 13);
         padding: 10px;
         margin: 10px;
-        height: 1000px;;
+        height: 500px;;
       }
-         
+     
+      .card-text{
+        overflow:hidden;
+        display: -webkit-box;
+       -webkit-line-clamp:3;
+       -webkit-box-orient: vertical;  
+        
+      }
       
     
     </style>
@@ -94,13 +101,14 @@
                 output += urltoimg +" ' alt='";
                 output += bktitle + " ' id='bimg'>   <div class='card-body'>   <h5 class='card-title'>";
                 output += bktitle + "</h5>  <p class='card-text line-clamp'>'";
-                output += bkdescptn + " </p> </div> </div> </div>"; 
+                output += bkdescptn + " </p><button type='button' class='btn btn-link' id='readmore'>Read more.. </button> </div> </div> </div>"; 
                
               }
               $("#bookdetails").html(output);
             }
           });
-          $("#filterme").click(function(){            
+          $("#filterme").click(function(){
+            
             $.ajax({
               type:"GET",
               url:"books.json",
@@ -123,7 +131,7 @@
                 output += urltoimg +" ' alt='";
                 output += bktitle + " ' id='bimg'>   <div class='card-body'>   <h5 class='card-title'>";
                 output += bktitle + "</h5>  <p class='card-text line-clamp'>'";
-                output += bkdescptn + " </p> </div> </div> </div>"; 
+                output += bkdescptn + " </p><button type='button' class='btn btn-link' id='readmore'>Read more.. </button> </div> </div> </div>"; 
                 
               }
               $("#bookdetails").html(output);
@@ -131,13 +139,55 @@
               }
             });
           });
-         
-          
+          $("#readmore").click(function(){
+            alert("read me");
+          });
+          $("#readmore").click(function(){
+            alert("read less");
+            $.ajax({
+              type:"GET",
+            url:"books.json",
+            beforeSend:function(){
+              $("#loader1").show();
+            },
+            success:function(bkdata){
+              
+              $("#loader1").hide();
+              console.log("vannu");
+              var output = "";
+              for(var i in bkdata){
+                
+                var bkid = bkdata[i].bkid;
+                var urltoimg = bkdata[i].bkimage;
+                var bktitle = bkdata[i].bktitle;
+                var bkdescptn = bkdata[i].bkdescptn;
+                var bkcategory = bkdata[i].bkcategory;
+                var filterval = $("#filcat").val();
+                console.log(filterval);
+                if((filterval != "All") && (bkcategory != filterval)){
+                    continue;                  
+                }
+                
+                output += "<div class='col col-sm-4' > <div class='card' style='width: 17rem;'>  <img class='card-img-top' src='./";
+                output += urltoimg +" ' alt='";
+                output += bktitle + " ' id='bimg'>   <div class='card-body'>   <h5 class='card-title'>";
+                output += bktitle + "</h5>  <p class='card-text line-clamp'id='";
+                output += i+ "'>'";
+                output += bkdescptn + " </p><button type='button' class='btn btn-link' id='readmore'>Read less.. </button> </div> </div> </div>";              
+               
+              }
+              $("#bookdetails").html(output);
+              $(this).parent().p.css("-webkit-line-clamp",0);
+              
+            }
+            }            
+            );
+          });
         });
     </script>
 </head>
 <body>      
-                <nav class="navbar navbar-expand-sm bg-primary navbar-dark" id="fxnav">                   
+                <nav class="navbar navbar-expand-sm  navbar-dark" id="fxnav">                   
                   
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                       <ul class="navbar-nav mr-auto">
@@ -174,7 +224,7 @@
     <div class="container">
         
         <br>
-        <img src="./ajax-loader.gif" alt="Loading" id="loader1">
+        <!-- <img src="./ajax-loader.gif" alt="Loading" id="loader1"> -->
         <div id="outer">
           <h1 style="color: white;">Library</h1>
         </div>
