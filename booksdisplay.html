@@ -7,6 +7,20 @@
     <title>Books Collection</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
+      #fxnav{
+        position: fixed;
+        width: 100%;
+        z-index: 10;
+        color: blue;
+      }
+      body{
+        width: 1200px;
+        background-color: antiquewhite;
+      }
+      p{
+        margin-bottom:0px;
+      }
+      
       #bimg{
         height:250px;
         width:200px;
@@ -16,19 +30,38 @@
         margin-top: 20px;
       }
       #outer{
-        position: relative;
-        z-index: 0;
+        position: absolute;
+        margin-left: 0px;
+        top:50px;
+        z-index:0;
+        left:0px;
         background-color:rgb(2, 2, 83);
-        height: 400px;
-        width: 1100px;        
+        height: 300px;
+        width: 1350px;    
+        padding-block-start: 100px; 
+        padding-left: 50px;
+
       }
       #bookdetails{
-        position: absolute;
-        z-index: -190;
-        background-color: rgb(197, 13, 13);
-        left: 15rem;        
-        width: 900px;
+        position: relative;
+        top:250px;
+        z-index:5;
+        background-color:white;
+        left: 10rem;        
+        width: 1000px;
       }
+      .btn{
+        padding: 0px,0px;;
+      }
+      .card{
+        border: 5px solid  rgb(197, 13, 13);
+        padding: 10px;
+        margin: 10px;
+        height: 1000px;;
+      }
+         
+      
+    
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
@@ -36,13 +69,13 @@
           $.ajax({
             type:"GET",
             url:"books.json",
-            // beforeSend:function(){
-            //   $("#loader1").show();
-            // },
+            beforeSend:function(){
+              $("#loader1").show();
+            },
             success:function(bkdata){
               
               $("#loader1").hide();
-              console.log("vannu");
+              
               var output = "";
               for(var i in bkdata){
                 
@@ -57,18 +90,17 @@
                     continue;                  
                 }
                 
-                output += "<div class='col-sm-4'> <div class='card' style='width: 17rem;'>  <img class='card-img-top' src='./";
+                output += "<div class='col col-sm-4' > <div class='card' style='width: 17rem;'>  <img class='card-img-top' src='./";
                 output += urltoimg +" ' alt='";
                 output += bktitle + " ' id='bimg'>   <div class='card-body'>   <h5 class='card-title'>";
-                output += bktitle + "</h5>  <p class='card-text' style=''>";
-                output += bkdescptn + " </p> </div> </div> </div>";              
+                output += bktitle + "</h5>  <p class='card-text line-clamp'>'";
+                output += bkdescptn + " </p> </div> </div> </div>"; 
                
               }
               $("#bookdetails").html(output);
             }
           });
-          $("#filterme").click(function(){
-            alert("vannu");
+          $("#filterme").click(function(){            
             $.ajax({
               type:"GET",
               url:"books.json",
@@ -90,19 +122,22 @@
                 output += "<div class='col-sm-4'> <div class='card' style='width: 17rem;'>  <img class='card-img-top' src='./";
                 output += urltoimg +" ' alt='";
                 output += bktitle + " ' id='bimg'>   <div class='card-body'>   <h5 class='card-title'>";
-                output += bktitle + "</h5>  <p class='card-text' style=''>";
-                output += bkdescptn + " </p> </div> </div> </div>";            
+                output += bktitle + "</h5>  <p class='card-text line-clamp'>'";
+                output += bkdescptn + " </p> </div> </div> </div>"; 
+                
               }
               $("#bookdetails").html(output);
+              console.log(output);
               }
             });
           });
+         
+          
         });
     </script>
 </head>
-<body>
-      
-                <nav class="navbar navbar-expand-sm bg-primary navbar-dark">                   
+<body>      
+                <nav class="navbar navbar-expand-sm bg-primary navbar-dark" id="fxnav">                   
                   
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                       <ul class="navbar-nav mr-auto">
@@ -125,10 +160,10 @@
                                 <option value="Mythology">Mythology</option>
                                 <option value="Romance">Romance</option>
                                 <option value="Thriller">Thriller</option>
-                                <option value="Horror">Horror</option>
+                                <option value="Autobiography">Autobiography</option>
                             </select>
                           </div>
-                        <button class="btn btn-outline-primary my-2 my-sm-0" id="filterme" type="button">Search</button>
+                        <button class="btn btn-outline-white my-2 my-sm-0" id="filterme" type="button">Search</button>
                         
                       </form>
                     </div>
@@ -139,9 +174,9 @@
     <div class="container">
         
         <br>
-        <!-- <img src="./ajax-loader.gif" alt="Loading" id="loader1"> -->
+        <img src="./ajax-loader.gif" alt="Loading" id="loader1">
         <div id="outer">
-          
+          <h1 style="color: white;">Library</h1>
         </div>
         <div class="row" id="bookdetails">
             
