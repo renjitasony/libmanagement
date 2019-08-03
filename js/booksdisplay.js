@@ -23,11 +23,11 @@ $(document).ready(function(){
               continue;                  
           }
           
-          output += "<div class='col col-sm-4' > <div class='card' style='width: 17rem;'>  <img class='card-img-top' src='./images/";
+          output += "<div class='col col-sm-4' > <div class='card' style='width: 19rem;'>  <img class='card-img-top' src='./images/";
           output += urltoimg +" ' alt='";
           output += bktitle + " ' id='bimg'>   <div class='card-body'>   <h5 class='card-title'>";
           output += bktitle + "</h5>  <p class='card-text line-clamp'>'";
-          output += bkdescptn + " </p> </div> </div> </div>"; 
+          output += bkdescptn + " </p> <button type='button' name='readmore' class='btn btn-link' id='readmore' value='Read more..'>Read more..</button> </div> </div> </div>"; 
          
         }
         $("#bookdetails").html(output);
@@ -55,7 +55,7 @@ $(document).ready(function(){
           output += urltoimg +" ' alt='";
           output += bktitle + " ' id='bimg'>   <div class='card-body'>   <h5 class='card-title'>";
           output += bktitle + "</h5>  <p class='card-text line-clamp'>'";
-          output += bkdescptn + " </p> </div> </div> </div>"; 
+          output += bkdescptn + " </p><button type='button' name='readmore' class='btn btn-link' id='readmore' value='Read more..'>Read more..</button> </div> </div> </div>"; 
           
         }
         $("#bookdetails").html(output);
@@ -63,48 +63,33 @@ $(document).ready(function(){
         }
       });
     });
-    $("#readmore").click(function(){
-      alert("read me");
-    });
-    $("#readmore").click(function(){
-      alert("read less");
+      
+    $(document).on('click','#readmore',function(){      
       $.ajax({
+        context:this,
         type:"GET",
-      url:"books.json",
-      beforeSend:function(){
-        $("#loader1").show();
-      },
-      success:function(bkdata){
-        
-        $("#loader1").hide();
-        console.log("vannu");
-        var output = "";
-        for(var i in bkdata){
+        url:"books.json",
+       beforeSend:function(){
+          $("#loader1").show();
+       },
+        success:function(bkdata){        
+           var btn = $(this);
           
-          var bkid = bkdata[i].bkid;
-          var urltoimg = bkdata[i].bkimage;
-          var bktitle = bkdata[i].bktitle;
-          var bkdescptn = bkdata[i].bkdescptn;
-          var bkcategory = bkdata[i].bkcategory;
-          var filterval = $("#filcat").val();
-          console.log(filterval);
-          if((filterval != "All") && (bkcategory != filterval)){
-              continue;                  
-          }
+          if(btn.val()=="Read more.."){
+            btn.attr("value","Read less..");
+            btn.text("Read less..");
+            $(this).parent().children('.card-text').css("overflow","scroll");
+          }else if(btn.val()=="Read less.."){
+            btn.attr("value","Read more..");
+            btn.text("Read more..");
+            $(this).parent().children('.card-text').css("overflow","hidden");
+          }                          
+                
           
-          output += "<div class='col col-sm-4' > <div class='card' style='width: 17rem;'>  <img class='card-img-top' src='./images/";
-          output += urltoimg +" ' alt='";
-          output += bktitle + " ' id='bimg'>   <div class='card-body'>   <h5 class='card-title'>";
-          output += bktitle + "</h5>  <p class='card-text line-clamp'id='";
-          output += i+ "'>'";
-          output += bkdescptn + " </p> </div> </div> </div>";              
-         
         }
-        $("#bookdetails").html(output);
-        $(this).parent().p.css("-webkit-line-clamp",0);
-        
-      }
-      }            
-      );
+      });
+      
+      
+      
     });
   });
