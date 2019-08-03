@@ -10,16 +10,6 @@
     "bkimage":"meluha.jpg"
 },
 {
-    "bkid":"E02",
-    "bktitle":"THE PALACE OF ILLUSIONS",
-    "bkauthor":"Chitra Banerjee",
-    "bkcategory":"Mythology",
-    "bkdescptn":"The Palace of Illusions is a 2008 novel by award-winning novelist and poet Chitra Banerjee Divakaruni. It was released by Picador. The novel is a rendition of the Hindu epic Mahabharata as told from Draupadi's (Panchaali's) viewpoint, namely, that of a woman living in a patriarchal world. As Booklist summarizes the plot, Smart, resilient, and courageous Panchaali, born of fire, marries all five of the famously heroic Pandava brothers, harbors a secret love, endures a long exile in the wilderness, instigates a catastrophic war, and slowly learns the truth about Krishna, her mysterious friend.",
-    "bkpages":490,
-    "bkprice":350,
-    "bkimage":"PALACE OF ILLUSIONS.jpg"
-},
-{
     "bkid":"E03",
     "bktitle":"THE FAULT IN OUR STARS",
     "bkauthor":"John Green",
@@ -31,13 +21,13 @@
 },
 {
     "bkid":"E04",
-    "bktitle":"THE IMMORTALS OF MELUHA",
-    "bkauthor":"Amish Tripathi",
-    "bkcategory":"Mythology",
-    "bkdescptn":"The Immortals of Meluha is the first novel of the Shiva trilogy series by Amish Tripathi. The story is set in the land of Meluha and starts with the arrival of the Shiva. The Meluhans believe that Shiva is their fabled saviour Neelkanth. Shiva decides to help the Meluhans in their war against the Chandravanshis, who had joined forces with a cursed Nagas; however, during his journey and the fight that ensues, Shiva learns how his choices actually reflect who he aspires to be and how they lead to dire consequences.",
+    "bktitle":"THE STORY OF MY EXPERIMENTS WITH TRUTH",
+    "bkauthor":"Mohandas K. Gandhi",
+    "bkcategory":"Autobiography",
+    "bkdescptn":"The Story of My Experiments with Truth is the autobiography of Mohandas K. Gandhi, covering his life from early childhood through to 1921. It was written in weekly installments and published in his journal Navjivan from 1925 to 1929. Its English translation also appeared in installments in his other journal Young India.[1] It was initiated at the insistence of Swami Anand and other close co-workers of Gandhi, who encouraged him to explain the background of his public campaigns. In 1999, the book was designated as one of the '100 Best Spiritual Books of the 20th Century' by a committee of global spiritual and religious authorities.",
     "bkpages":390,
     "bkprice":250,
-    "bkimage":"meluha.jpg"
+    "bkimage":"mkgandhi.jpg"
 },
 {
     "bkid":"E05",
@@ -49,6 +39,17 @@
     "bkprice":250,
     "bkimage":"Pride and prejudice.jpg"
 },
+{
+    "bkid":"E02",
+    "bktitle":"THE PALACE OF ILLUSIONS",
+    "bkauthor":"Chitra Banerjee",
+    "bkcategory":"Mythology",
+    "bkdescptn":"The Palace of Illusions is a 2008 novel by award-winning novelist and poet Chitra Banerjee Divakaruni. It was released by Picador. The novel is a rendition of the Hindu epic Mahabharata as told from Draupadi's (Panchaali's) viewpoint, namely, that of a woman living in a patriarchal world. As Booklist summarizes the plot, Smart, resilient, and courageous Panchaali, born of fire, marries all five of the famously heroic Pandava brothers, harbors a secret love, endures a long exile in the wilderness, instigates a catastrophic war, and slowly learns the truth about Krishna, her mysterious friend.",
+    "bkpages":490,
+    "bkprice":350,
+    "bkimage":"PALACE OF ILLUSIONS.jpg"
+},
+
 {
     "bkid":"E06",
     "bktitle":"THE NOTEBOOK",
@@ -73,7 +74,7 @@
     "bkid":"E08",
     "bktitle":"THE BEAUTIFUL DISASTER",
     "bkauthor":"Jamie Mcguire",
-    "bkcategory":"Mythology",
+    "bkcategory":"Romance",
     "bkdescptn":"Beautiful Disaster is a novel by American author Jamie McGuire. It appeared first on the New York Times Best Seller list as a self-published novel in 2012.[2] Beautiful Disaster was originally self-published in May 2011, then acquired by Atria Books of Simon & Schuster and re-released in August 2012.[3] It has been translated into over fifty languages worldwide.",
     "bkpages":390,
     "bkprice":250,
@@ -81,13 +82,13 @@
 },
 {
     "bkid":"E09",
-    "bktitle":"THE IMMORTALS OF MELUHA",
-    "bkauthor":"Amish Tripathi",
-    "bkcategory":"Mythology",
-    "bkdescptn":"The Immortals of Meluha is the first novel of the Shiva trilogy series by Amish Tripathi. The story is set in the land of Meluha and starts with the arrival of the Shiva. The Meluhans believe that Shiva is their fabled saviour Neelkanth. Shiva decides to help the Meluhans in their war against the Chandravanshis, who had joined forces with a cursed Nagas; however, during his journey and the fight that ensues, Shiva learns how his choices actually reflect who he aspires to be and how they lead to dire consequences.",
-    "bkpages":390,
+    "bktitle":"WINGS OF FIRE",
+    "bkauthor":"APJ Abdul Kalam",
+    "bkcategory":"Autobiography",
+    "bkdescptn":"Wings of Fire: An Autobiography of A P J Abdul Kalam (1999), former President of India. It was written by Dr. Kalam and Arun Tiwari.[1] Kalam examines his early life, effort, hardship, fortitude, luck and chance that eventually led him to lead Indian space research, nuclear and missile programs.",
+    "bkpages":230,
     "bkprice":250,
-    "bkimage":"meluha.jpg"
+    "bkimage":"wingsoffire.jpg"
 },
 {
     "bkid":"E10",

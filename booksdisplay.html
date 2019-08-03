@@ -6,185 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Books Collection</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-      #fxnav{
-        position: fixed;
-        width: 100%;
-        z-index: 10;
-        background-color: rgb(5, 5, 138);
-      }
-      body{
-        width: 1200px;
-        background-color: antiquewhite;
-      }
-      p{
-        margin-bottom:0px;
-      }
-      
-      #bimg{
-        height:250px;
-        width:200px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 20px;
-      }
-      #outer{
-        position: absolute;
-        margin-left: 0px;
-        top:50px;
-        z-index:0;
-        left:0px;
-        background-color:rgb(2, 2, 83);
-        height: 300px;
-        width: 1350px;    
-        padding-block-start: 100px; 
-        padding-left: 50px;
-
-      }
-      #bookdetails{
-        position: relative;
-        top:250px;
-        z-index:5;
-        background-color:white;
-        left: 10rem;        
-        width: 1000px;
-      }
-      .btn{
-        padding: 0px,0px;;
-      }
-      .card{
-        border: 5px solid  rgb(197, 13, 13);
-        padding: 10px;
-        margin: 10px;
-        height: 500px;;
-      }
-     
-      .card-text{
-        overflow:hidden;
-        display: -webkit-box;
-       -webkit-line-clamp:3;
-       -webkit-box-orient: vertical;  
-        
-      }
-      
-    
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-          $.ajax({
-            type:"GET",
-            url:"books.json",
-            beforeSend:function(){
-              $("#loader1").show();
-            },
-            success:function(bkdata){
-              
-              $("#loader1").hide();
-              
-              var output = "";
-              for(var i in bkdata){
-                
-                var bkid = bkdata[i].bkid;
-                var urltoimg = bkdata[i].bkimage;
-                var bktitle = bkdata[i].bktitle;
-                var bkdescptn = bkdata[i].bkdescptn;
-                var bkcategory = bkdata[i].bkcategory;
-                var filterval = $("#filcat").val();
-                console.log(filterval);
-                if((filterval != "All") && (bkcategory != filterval)){
-                    continue;                  
-                }
-                
-                output += "<div class='col col-sm-4' > <div class='card' style='width: 17rem;'>  <img class='card-img-top' src='./";
-                output += urltoimg +" ' alt='";
-                output += bktitle + " ' id='bimg'>   <div class='card-body'>   <h5 class='card-title'>";
-                output += bktitle + "</h5>  <p class='card-text line-clamp'>'";
-                output += bkdescptn + " </p> </div> </div> </div>"; 
-               
-              }
-              $("#bookdetails").html(output);
-            }
-          });
-          $("#filterme").click(function(){
-            
-            $.ajax({
-              type:"GET",
-              url:"books.json",
-              success:function(data){
-                var output = "";
-              for(var i in data){
-                
-                var bkid = data[i].bkid;
-                var urltoimg = data[i].bkimage;
-                var bktitle = data[i].bktitle;
-                var bkdescptn = data[i].bkdescptn;
-                var bkcategory = data[i].bkcategory;
-                var filterval = $("#filcat").val();
-                
-                if((filterval != "All") && (bkcategory != filterval)){
-                    continue;                  
-                }
-                console.log(filterval);
-                output += "<div class='col-sm-4'> <div class='card' style='width: 17rem;'>  <img class='card-img-top' src='./";
-                output += urltoimg +" ' alt='";
-                output += bktitle + " ' id='bimg'>   <div class='card-body'>   <h5 class='card-title'>";
-                output += bktitle + "</h5>  <p class='card-text line-clamp'>'";
-                output += bkdescptn + " </p> </div> </div> </div>"; 
-                
-              }
-              $("#bookdetails").html(output);
-              console.log(output);
-              }
-            });
-          });
-          $("#readmore").click(function(){
-            alert("read me");
-          });
-          $("#readmore").click(function(){
-            alert("read less");
-            $.ajax({
-              type:"GET",
-            url:"books.json",
-            beforeSend:function(){
-              $("#loader1").show();
-            },
-            success:function(bkdata){
-              
-              $("#loader1").hide();
-              console.log("vannu");
-              var output = "";
-              for(var i in bkdata){
-                
-                var bkid = bkdata[i].bkid;
-                var urltoimg = bkdata[i].bkimage;
-                var bktitle = bkdata[i].bktitle;
-                var bkdescptn = bkdata[i].bkdescptn;
-                var bkcategory = bkdata[i].bkcategory;
-                var filterval = $("#filcat").val();
-                console.log(filterval);
-                if((filterval != "All") && (bkcategory != filterval)){
-                    continue;                  
-                }
-                
-                output += "<div class='col col-sm-4' > <div class='card' style='width: 17rem;'>  <img class='card-img-top' src='./";
-                output += urltoimg +" ' alt='";
-                output += bktitle + " ' id='bimg'>   <div class='card-body'>   <h5 class='card-title'>";
-                output += bktitle + "</h5>  <p class='card-text line-clamp'id='";
-                output += i+ "'>'";
-                output += bkdescptn + " </p> </div> </div> </div>";              
-               
-              }
-              $("#bookdetails").html(output);
-              $(this).parent().p.css("-webkit-line-clamp",0);
-              
-            }
-            }            
-            );
-          });
-        });
-    </script>
+    <script src="./js/booksdisplay.js"></script>
 </head>
 <body>      
                 <nav class="navbar navbar-expand-sm  navbar-dark" id="fxnav">                   
@@ -201,8 +25,7 @@
                           <a class="nav-link" href="booksdisplay.html">Books</a>
                         </li>                          
                       </ul>
-                      <form class="form-inline my-2 my-lg-0">
-                        <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+                      <form class="form-inline my-2 my-lg-0">                        
                         <div class="form-group">
                            
                             <select class="form-control" id ="filcat" value="All" >
@@ -212,19 +35,15 @@
                                 <option value="Thriller">Thriller</option>
                                 <option value="Autobiography">Autobiography</option>
                             </select>
-                          </div>
-                        <button class="btn btn-outline-white my-2 my-sm-0" id="filterme" type="button">Search</button>
-                        
+                          </div>                     
                       </form>
                     </div>
-                  </nav>
-                  
+                  </nav>                 
 
-              <br>
     <div class="container">
         
         <br>
-        <!-- <img src="./ajax-loader.gif" alt="Loading" id="loader1"> -->
+        <img src="./images/ajax-loader.gif" alt="Loading" id="loader1">
         <div id="outer">
           <h1 style="color: white;">Library</h1>
         </div>

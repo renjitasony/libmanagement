@@ -6,26 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Library</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    
+    <link rel="stylesheet" href="./css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <style>
-       #outer{
-        position: absolute;
-        margin-left: 0px;
-        top:50px;
-        z-index:0;
-        left:0px;
-        background-color:rgb(2, 2, 83);
-        height: 300px;
-        width: 1350px;    
-        padding-block-start: 100px; 
-        padding-left: 50px;    
-      }
-      #bookdetails{
+       
+      #logindetails{
         position: relative;
-        top:100px;
+        top:175px;
         z-index:5;
         background-color:white;
-        left: 5rem;        
+        left: 10rem;        
         width: 1000px;
       }
       .card{
@@ -35,13 +25,12 @@
         height: 300px;
         
       }
-      .navbar-custom{
-        background-color: rgb(5, 5, 138);
-      }
+     
     </style>
+    <script src="./js/login.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm  navbar-custom">
+    <nav class="navbar navbar-expand-sm  navbar-custom" id="fxnav">
         <ul class="navbar-nav">
           <li class="nav-item active">
             <a class="nav-link" href="liblisting.html">Login</a>
@@ -55,14 +44,12 @@
         </ul>
       </nav>
       <br>
-      <div class="container">
-          <br>
-          
+      <div class="container">                    
           <div id="outer">
             <h1 style="color: white;">Library</h1>
           </div>
           <br>
-        <div class="row" id="bookdetails" >
+        <div class="row" id="logindetails" >
           <div class="col">
             <div class="card">             
               <div class="card-body">
@@ -89,19 +76,5 @@
           </div>
         </div>        
       </div>
-      <script>        
-        $(document).ready(function(){
-          $("#login").click(function(){
-            console.log("valkeri");
-          var uname = $("#uname").val();
-          var pwd = $("pwd").val();
-          if(uname =="" || pwd == ""){
-            alert("Please enter username and password to continue");
-            return false;
-          }
-          window.location.replace("booksdisplay.html");
-          });
-        });
-      </script>
 </body>
 </html>
